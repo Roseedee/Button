@@ -1,7 +1,8 @@
 #include "Window.h"
 
 //function declaration
-LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+void Button(HWND hwnd);
 
 BaseWindow Win;
 
@@ -27,9 +28,24 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR, int nCmdShow) {
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	
 	switch (msg) {
+	case WM_CREATE:
+		Button(hwnd);
+		break;
+	case WM_COMMAND:
+		switch (LOWORD(wParam)) {
+		case IDC_BUTTON1:
+			MessageBoxA(0, "Your Click button1", "Click", 0);
+			break;
+		}
+		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
 	}
 	return DefWindowProc(hwnd, msg, wParam, lParam);
+}
+
+void Button(HWND hwnd) {
+	int defstyle = WS_VISIBLE | WS_CHILD;
+	CreateWindow(WC_BUTTON, L"Button 1", defstyle | BS_DEFPUSHBUTTON, 10, 10, 100, 20, hwnd, (HMENU) IDC_BUTTON1, 0, 0);
 }

@@ -1,5 +1,11 @@
 #pragma once
 #include <Windows.h>
+#include <CommCtrl.h>
+#include "resource.h"
+
+
+//function declaration
+LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 class BaseWindow
 {
