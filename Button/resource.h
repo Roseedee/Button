@@ -3,6 +3,7 @@
 // Used by Button.rc
 
 #define IDC_BUTTON1						10
+#define IDC_BUTTON2						11
 
 // Next default values for new objects
 // 

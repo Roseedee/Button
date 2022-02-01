@@ -1,8 +1,9 @@
 #include "Window.h"
+#include "Button.h"
 
 //function declaration
 
-void Button(HWND hwnd);
+void ButtonControl(HWND hwnd);
 
 BaseWindow Win;
 
@@ -27,16 +28,25 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR, int nCmdShow) {
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	
+	/*LPDRAWITEMSTRUCT item = */
 	switch (msg) {
+	case WM_DRAWITEM: {
+
+		break;
+	}
 	case WM_CREATE:
-		Button(hwnd);
+		ButtonControl(hwnd);
 		break;
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
 		case IDC_BUTTON1:
 			MessageBoxA(0, "Your Click button1", "Click", 0);
 			break;
+		case IDC_BUTTON2:
+			MessageBoxA(0, "Your Click button2", "Click", 0);
+			break;
 		}
+		
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
@@ -45,7 +55,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-void Button(HWND hwnd) {
-	int defstyle = WS_VISIBLE | WS_CHILD;
-	CreateWindow(WC_BUTTON, L"Button 1", defstyle | BS_DEFPUSHBUTTON, 10, 10, 100, 20, hwnd, (HMENU) IDC_BUTTON1, 0, 0);
+void ButtonControl(HWND hwnd) {
+	Button b;
+	b.BtnInit(hwnd, BS_PUSHBUTTON , L"Click", 10, 10, 100, 30, IDC_BUTTON1);
+	Button b2;
+	b2.BtnInit(hwnd, BS_FLAT, L"BUTTON 2", 10, 50, 100, 30, IDC_BUTTON2);
+	
 }
