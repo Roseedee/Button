@@ -13,7 +13,6 @@ public:
 	bool Register(HINSTANCE hInst);
 	HWND Create(const wchar_t* title, int Style, int width, int height);
 private:
-
 	void CenterWindow(RECT& rc);
 
 };
