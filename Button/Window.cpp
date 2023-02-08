@@ -58,7 +58,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 void ButtonControl(HWND hwnd) {
 	Button b;
 	b.BtnInit(hwnd, BS_PUSHBUTTON , L"Click", 10, 10, 100, 30, IDC_BUTTON1);
+	b.BtnInit(hwnd, BS_PUSHBUTTON, L"Click", 100, 10, 100, 30, IDC_BUTTON1);
 	Button b2;
 	b2.BtnInit(hwnd, BS_FLAT, L"BUTTON 2", 10, 50, 100, 30, IDC_BUTTON2);
+	b2.BtnInit(hwnd, BS_FLAT, L"BUTTON 2", 100, 50, 100, 30, IDC_BUTTON2);
 	
 }
